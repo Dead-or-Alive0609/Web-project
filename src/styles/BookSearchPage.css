@@ -1,0 +1,113 @@
+.book-search-page {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+.book-search-page h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* 검색창 */
+.search-bar {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.search-bar input[type="text"] {
+  padding: 8px 12px;
+  font-size: 16px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.search-bar button {
+  padding: 8px 16px;
+  background-color: #333;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-bar button:hover {
+  background-color: #555;
+}
+
+/* 결과 그리드 */
+.search-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* 카드 UI */
+.search-book-card {
+  background-color: #fafafa;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #eee;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  max-width: 180px;
+  margin: auto;
+}
+
+.search-book-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.search-book-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+/* 텍스트 */
+.search-book-info {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.3;
+}
+
+.search-book-info .book-title {
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.no-img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background-color: #ddd;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.no-results {
+  margin-top: 20px;
+  color: #888;
+  font-style: italic;
+  font-size: 15px;
+}

@@ -1,0 +1,14 @@
+types {
+    text/html html htm shtml;
+    text/css css;
+    text/javascript js;
+    image/jpeg jpeg jpg;
+    image/png png;
+    image/gif gif;
+    application/javascript js;
+    application/json json;
+    application/font-woff woff;
+    application/font-woff2 woff2;
+    font/ttf ttf;
+    font/otf otf;
+}
