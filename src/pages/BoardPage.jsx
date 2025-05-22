@@ -52,7 +52,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { getAllPosts } from '../db/postsDb';
+import { getAllPosts } from '../db/db';
 import '../styles/BoardPage.css';
 
 function BoardPage() {

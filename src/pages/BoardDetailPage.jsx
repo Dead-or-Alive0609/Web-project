@@ -6,7 +6,7 @@ import {
   deletePost,
   addComment,
   getCommentsByPostId,
-} from '../db/postsDb';
+} from '../db/db';
 import '../styles/BoardDetailPage.css';
 import { FaHeart, FaPaperPlane } from 'react-icons/fa';
 
