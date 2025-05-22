@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { searchBooks } from "../../api/bookApi";
+import { searchBooks } from "../api/bookApi";
 import "../styles/BookSearchPage.css";
 
 function BookSearchPage() {
