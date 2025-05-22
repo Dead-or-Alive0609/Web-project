@@ -6,25 +6,36 @@ const POST_STORE = 'posts';
 const COMMENT_STORE = 'comments';
 
 export async function initDB() {
-  return openDB(DB_NAME, DB_VERSION, {
-    upgrade(db) {
-      if (!db.objectStoreNames.contains(POST_STORE)) {
-        const postStore = db.createObjectStore(POST_STORE, {
-          keyPath: 'id',
-          autoIncrement: true,
-        });
-        postStore.createIndex('createdAt', 'createdAt');
-      }
+  try {
+    const db = await openDB(DB_NAME, DB_VERSION, {
+      upgrade(db) {
+        console.log("🔥 upgrading DB...");
+        if (!db.objectStoreNames.contains(POST_STORE)) {
+          const postStore = db.createObjectStore(POST_STORE, {
+            keyPath: 'id',
+            autoIncrement: true,
+          });
+          postStore.createIndex('createdAt', 'createdAt');
+          console.log("✅ POST_STORE created");
+        }
 
-      if (!db.objectStoreNames.contains(COMMENT_STORE)) {
-        const commentStore = db.createObjectStore(COMMENT_STORE, {
-          keyPath: 'id',
-          autoIncrement: true,
-        });
-        commentStore.createIndex('postId', 'postId');
-      }
-    },
-  });
+        if (!db.objectStoreNames.contains(COMMENT_STORE)) {
+          const commentStore = db.createObjectStore(COMMENT_STORE, {
+            keyPath: 'id',
+            autoIncrement: true,
+          });
+          commentStore.createIndex('postId', 'postId');
+          console.log("✅ COMMENT_STORE created");
+        }
+      },
+    });
+
+    console.log("✅ DB opened successfully");
+    return db;
+  } catch (err) {
+    console.error("❌ DB init failed:", err);
+    throw err;
+  }
 }
 
 // POSTS
