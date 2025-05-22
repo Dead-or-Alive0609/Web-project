@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { searchBooks } from "../api/bookApi";
+import { searchBooks } from "../../api/bookApi";
 
 function BookDetailPage() {
   const { isbn: rawIsbn } = useParams();

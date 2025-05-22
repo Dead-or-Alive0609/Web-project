@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { searchBooks } from "../api/bookApi";
+import { searchBooks } from "../../api/bookApi";
 import "../styles/BookRecommendPage.css";
 
 const KEYWORDS = ["자기계발", "심리학", "에세이", "소설", "경제"];
