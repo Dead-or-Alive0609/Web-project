@@ -42,7 +42,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addPost } from '../db/db';
+import { addPost } from '../db/postsDb';
 import '../styles/WritePage.css';
 
 function WritePage() {

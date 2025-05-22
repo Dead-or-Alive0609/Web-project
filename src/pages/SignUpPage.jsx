@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { addUser, getUserByEmail } from '../db/db';
+import { addUser, getUserByEmail } from '../db/indexedDb';
 import '../styles/Login.css';
 
 function SignUpPage() {

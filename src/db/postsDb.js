@@ -1,6 +1,6 @@
 import { openDB } from 'idb';
 
-const DB_NAME = 'vectaDB';
+const DB_NAME = 'postsDB';
 const DB_VERSION = 6; // 🔥 버전 확실히 높이기
 const POST_STORE = 'posts';
 const COMMENT_STORE = 'comments';

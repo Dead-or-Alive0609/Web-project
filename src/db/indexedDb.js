@@ -1,6 +1,6 @@
 import { openDB } from 'idb';
 
-const DB_NAME = 'vectaDB';
+const DB_NAME = 'usersDB';
 const DB_VERSION = 6; // ✅ 반드시 기존보다 높게 설정
 const STORE_NAME = 'users';
 
