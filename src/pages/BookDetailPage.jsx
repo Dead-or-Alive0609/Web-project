@@ -10,13 +10,19 @@ function BookDetailPage() {
 
   useEffect(() => {
     const fetchBook = async () => {
-      const results = await searchBooks(isbn13);
-      const found = results.find((item) => item.isbn?.includes(isbn13)) || results[0];
+      try {
+        const res = await fetch(`/api/search?keyword=${isbn13}`);
+        if (!res.ok) throw new Error("검색 API 실패");
+        const results = await res.json();
+        const found = results.find((item) => item.isbn?.includes(isbn13)) || results[0];
 
-      if (found) {
-        setBook({ ...found, isbn: isbn13 });
-        const currentStock = getStoredStock(isbn13);
-        setStock(currentStock);
+        if (found) {
+          setBook({ ...found, isbn: isbn13 });
+          const currentStock = getStoredStock(isbn13);
+          setStock(currentStock);
+        }
+      } catch (err) {
+        console.error("도서 검색 실패:", err);
       }
     };
 
@@ -85,24 +91,12 @@ function BookDetailPage() {
       )}
       <div>
         <h2>{book.title}</h2>
-        <p>
-          <strong>저자:</strong> {book.authors?.join(", ")}
-        </p>
-        <p>
-          <strong>출판사:</strong> {book.publisher}
-        </p>
-        <p>
-          <strong>출간일:</strong> {book.datetime?.split("T")[0]}
-        </p>
-        <p>
-          <strong>ISBN:</strong> {isbn13}
-        </p>
-        <p>
-          <strong>설명:</strong> {book.contents?.slice(0, 300)}...
-        </p>
-        <p>
-          <strong>📦 현재 재고:</strong> {stock}권
-        </p>
+        <p><strong>저자:</strong> {book.authors?.join(", ")}</p>
+        <p><strong>출판사:</strong> {book.publisher}</p>
+        <p><strong>출간일:</strong> {book.datetime?.split("T")[0]}</p>
+        <p><strong>ISBN:</strong> {isbn13}</p>
+        <p><strong>설명:</strong> {book.contents?.slice(0, 300)}...</p>
+        <p><strong>📦 현재 재고:</strong> {stock}권</p>
         <button onClick={handleReserve} style={{ marginRight: "10px" }}>
           📖 도서 예매
         </button>
