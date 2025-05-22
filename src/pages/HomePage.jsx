@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../styles/HomePage.css';
 
@@ -24,29 +23,30 @@ function HomePage() {
 
   useEffect(() => {
     const fetchThumbnails = async () => {
-      const updatedImages = {};
-      for (const book of bestsellers) {
-        try {
-          const response = await axios.get('https://dapi.kakao.com/v3/search/book', {
-            params: { query: book.title },
-            headers: {
-              Authorization: `KakaoAK ${process.env.REACT_APP_KAKAO_API_KEY}`,
-            },
-          });
-          const first = response.data.documents[0];
-          updatedImages[book.isbn] = first?.thumbnail || '';
-        } catch (error) {
-          console.error(`${book.title} 이미지 불러오기 실패`, error);
-        }
+      try {
+        const response = await fetch('/api/home-thumbnails', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ titles: bestsellers.map((b) => b.title) }),
+        });
+
+        const data = await response.json();
+        const images = {};
+        bestsellers.forEach((book) => {
+          images[book.isbn] = data[book.title] || '';
+        });
+
+        setBookImages(images);
+      } catch (error) {
+        console.error('썸네일 불러오기 실패', error);
       }
-      setBookImages(updatedImages);
     };
 
     fetchThumbnails();
   }, []);
 
   const handleClick = (isbn) => {
-    const cleanIsbn = isbn.split(' ')[0]; // 공백 있을 경우 대비
+    const cleanIsbn = isbn.split(' ')[0];
     navigate(`/detail/${cleanIsbn}`);
   };
 
