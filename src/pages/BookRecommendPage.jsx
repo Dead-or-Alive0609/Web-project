@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { searchBooks } from "../api/bookApi";
 import "../styles/BookRecommendPage.css";
 
 const KEYWORDS = ["자기계발", "심리학", "에세이", "소설", "경제"];
@@ -10,8 +9,15 @@ function BookRecommendPage() {
 
   useEffect(() => {
     const fetchBooks = async () => {
-      const results = await searchBooks(selectedKeyword);
-      setBooks(results.slice(0, 11)); // 최대 9권
+      try {
+        const res = await fetch(`/api/search?keyword=${encodeURIComponent(selectedKeyword)}`);
+        if (!res.ok) throw new Error("API 요청 실패");
+        const data = await res.json();
+        setBooks(data.slice(0, 11)); // 최대 11권만
+      } catch (error) {
+        console.error("도서 추천 로딩 실패:", error);
+        setBooks([]);
+      }
     };
 
     fetchBooks();
