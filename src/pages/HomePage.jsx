@@ -8,7 +8,7 @@ function HomePage() {
   const bestNovels = [
     {
       isbn: "9788998441012",
-      title: "모순순",
+      title: "모순",
       authors: ["양귀자"],
       thumbnail: "https://image.yes24.com/goods/8759796/XL",
     },
