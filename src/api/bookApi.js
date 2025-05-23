@@ -23,14 +23,3 @@ export const searchBooks = async (query) => {
     return [];
   }
 };
-
-export const getHomeThumbnails = async () => {
-  try {
-    const res = await fetch(`/api/home-thumbnails`);
-    const data = await res.json();
-    return data || [];
-  } catch (err) {
-    console.error("🏠 홈 썸네일 오류:", err);
-    return [];
-  }
-};
