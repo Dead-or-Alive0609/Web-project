@@ -11,10 +11,10 @@ function BookDetailPage() {
   useEffect(() => {
     const fetchBook = async () => {
       try {
-        const res = await fetch(`/api/search?keyword=${isbn13}`);
+        const res = await fetch(`/api/books?query=${isbn13}`);
         if (!res.ok) throw new Error("검색 API 실패");
         const results = await res.json();
-        const found = results.find((item) => item.isbn?.includes(isbn13)) || results[0];
+        const found = results.documents?.find((item) => item.isbn?.includes(isbn13)) || results.documents?.[0];
 
         if (found) {
           setBook({ ...found, isbn: isbn13 });

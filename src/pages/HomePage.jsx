@@ -9,7 +9,7 @@ function HomePage() {
   useEffect(() => {
     const fetchThumbnails = async () => {
       try {
-        const res = await fetch('/api/home-thumbnails'); // ✅ 반드시 GET
+        const res = await fetch('/api/home-thumbnails');
         const data = await res.json();
         setBookList(data);
       } catch (error) {

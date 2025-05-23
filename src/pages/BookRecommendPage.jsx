@@ -10,10 +10,10 @@ function BookRecommendPage() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await fetch(`/api/search?keyword=${encodeURIComponent(selectedKeyword)}`);
+        const res = await fetch(`/api/books?query=${encodeURIComponent(selectedKeyword)}`);
         if (!res.ok) throw new Error("API 요청 실패");
         const data = await res.json();
-        setBooks(data.slice(0, 11)); // 최대 11권만
+        setBooks(data.documents?.slice(0, 11) || []);
       } catch (error) {
         console.error("도서 추천 로딩 실패:", error);
         setBooks([]);
