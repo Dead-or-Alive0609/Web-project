@@ -1,15 +1,33 @@
 import React, { useState } from "react";
-import { searchBooks } from "../api/bookApi";
 import "../styles/BookSearchPage.css";
 
 function BookSearchPage() {
   const [query, setQuery] = useState("");
   const [books, setBooks] = useState([]);
+  const [error, setError] = useState("");
 
   const handleSearch = async () => {
+    setError("");
+    setBooks([]);
+
     if (query.trim() === "") return;
-    const result = await searchBooks(query);
-    setBooks(result);
+
+    try {
+      const res = await fetch(`/api/books?query=${encodeURIComponent(query)}`);
+      if (!res.ok) throw new Error("API 호출 실패");
+
+      const data = await res.json();
+      const results = data.documents || [];
+
+      if (results.length === 0) {
+        setError("검색 결과가 없습니다.");
+      } else {
+        setBooks(results);
+      }
+    } catch (err) {
+      console.error("도서 검색 실패:", err);
+      setError("도서 검색 중 오류가 발생했습니다.");
+    }
   };
 
   return (
@@ -26,7 +44,9 @@ function BookSearchPage() {
       </div>
 
       <div className="search-results">
-        {books.length > 0 ? (
+        {error && <p className="no-results">{error}</p>}
+
+        {!error && books.length > 0 && (
           books.map((book) => {
             const isbn13 = book.isbn?.split(" ").find((num) => num.length === 13) || "";
             return (
@@ -47,8 +67,6 @@ function BookSearchPage() {
               </div>
             );
           })
-        ) : (
-          <p className="no-results">검색 결과가 없습니다.</p>
         )}
       </div>
     </div>
