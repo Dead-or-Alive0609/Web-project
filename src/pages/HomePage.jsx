@@ -7,76 +7,76 @@ function HomePage() {
 
   const bestNovels = [
     {
-      isbn: "9788936437541",
-      title: "디디의 우산",
-      authors: ["황정은"],
-      thumbnail: "https://covers.openlibrary.org/b/isbn/9788936437541-L.jpg",
+      isbn: "9791169825801",
+      title: "세이노의 가르침",
+      authors: ["세이노"],
+      thumbnail: "https://image.yes24.com/goods/117685205/XL",
     },
     {
-      isbn: "9781335050076",
-      title: "Apartment Women",
-      authors: ["구병모"],
-      thumbnail: "https://covers.openlibrary.org/b/isbn/9781335050076-L.jpg",
+      isbn: "9791192833033",
+      title: "불변의 법칙",
+      authors: ["모건 하우절"],
+      thumbnail: "https://image.yes24.com/goods/119761388/XL",
     },
     {
-      isbn: "9788954682152",
-      title: "We Do Not Part",
-      authors: ["한강"],
-      thumbnail: "https://covers.openlibrary.org/b/isbn/9788954682152-L.jpg",
+      isbn: "9791136292408",
+      title: "하얼빈",
+      authors: ["김훈"],
+      thumbnail: "https://image.yes24.com/goods/112164239/XL",
     },
     {
-      isbn: "9788996989128",
+      isbn: "9791198454850",
+      title: "마흔에 읽는 쇼펜하우어",
+      authors: ["강용수"],
+      thumbnail: "https://image.yes24.com/goods/119755841/XL",
+    },
+    {
+      isbn: "9791160949155",
+      title: "도둑맞은 집중력",
+      authors: ["요한 하리"],
+      thumbnail: "https://image.yes24.com/goods/109693171/XL",
+    },
+    {
+      isbn: "9788936434495",
       title: "소년이 온다",
       authors: ["한강"],
-      thumbnail: "https://covers.openlibrary.org/b/isbn/9788996989128-L.jpg",
+      thumbnail: "https://image.yes24.com/goods/13137546/XL",
+    },
+    {
+      isbn: "9788984375042",
+      title: "나미야 잡화점의 기적",
+      authors: ["히가시노 게이고"],
+      thumbnail: "https://image.yes24.com/goods/12140969/XL",
+    },
+    {
+      isbn: "9791130682786",
+      title: "흔한남매 14",
+      authors: ["흔한남매"],
+      thumbnail: "https://image.yes24.com/goods/119509245/XL",
     },
     {
       isbn: "9788954684003",
       title: "사피엔스",
       authors: ["유발 하라리"],
-      thumbnail: "https://covers.openlibrary.org/b/isbn/9788954684003-L.jpg",
+      thumbnail: "https://image.yes24.com/goods/18249023/XL",
     },
     {
-      isbn: "9788934976553",
-      title: "돈의 심리학",
-      authors: ["모건 하우절"],
-      thumbnail: "https://covers.openlibrary.org/b/isbn/9788934976553-L.jpg",
+      isbn: "9788970128856",
+      title: "내가 틀릴 수도 있습니다",
+      authors: ["비욘 나티코 린데블라드"],
+      thumbnail: "https://image.yes24.com/goods/102042189/XL",
     },
     {
-      isbn: "9788936433665",
-      title: "죽고 싶지만 떡볶이는 먹고 싶어",
-      authors: ["백세희"],
-      thumbnail: "https://covers.openlibrary.org/b/isbn/9788936433665-L.jpg",
-    },
-    {
-      isbn: "9788965965205",
-      title: "미움받을 용기",
-      authors: ["기시미 이치로", "고가 후미타케"],
-      thumbnail: "https://covers.openlibrary.org/b/isbn/9788965965205-L.jpg",
+      isbn: "9791198342416",
+      title: "역행자",
+      authors: ["자청"],
+      thumbnail: "https://image.yes24.com/goods/110597518/XL",
     },
     {
       isbn: "9791191891287",
-      title: "역행자",
-      authors: ["자청"],
-      thumbnail: "https://covers.openlibrary.org/b/isbn/9791191891287-L.jpg",
-    },
-    {
-      isbn: "9788990982583",
-      title: "말의 품격",
-      authors: ["이기주"],
-      thumbnail: "https://covers.openlibrary.org/b/isbn/9788990982583-L.jpg",
-    },
-    {
-      isbn: "9791168477605",
-      title: "진짜 공부",
-      authors: ["신영준", "고영성"],
-      thumbnail: "https://covers.openlibrary.org/b/isbn/9791168477605-L.jpg",
-    },
-    {
-      isbn: "9791161571379",
-      title: "문과 남자의 과학 공부",
-      authors: ["이선영"],
-      thumbnail: "https://covers.openlibrary.org/b/isbn/9791161571379-L.jpg",
+      title: "메리골드 마음 세탁소",
+      authors: ["윤정은"],
+      thumbnail: "https://image.yes24.com/goods/117716170/XL",
     },
   ];
 
@@ -94,11 +94,7 @@ function HomePage() {
             className="book-item"
             onClick={() => handleClick(book.isbn)}
           >
-            {book.thumbnail ? (
-              <img src={book.thumbnail} alt={book.title} />
-            ) : (
-              <div className="no-img">이미지 없음</div>
-            )}
+            <img src={book.thumbnail} alt={book.title} />
             <div className="book-title">
               {idx + 1}위. {book.title}
             </div>
