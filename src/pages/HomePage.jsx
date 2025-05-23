@@ -30,61 +30,61 @@ function HomePage() {
               `https://dapi.kakao.com/v3/search/book?target=title&query=${encodeURIComponent(book.title)}`,
               {
                 headers: {
-                  Authorization: `KakaoAK YOUR_REST_API_KEY`,
+                  Authorization: `KakaoAK ${process.env.REACT_APP_KAKAO_API_KEY}`,
                 },
               }
             );
-            const data = await res.json();
-            const thumbnail =
-              data.documents && data.documents.length > 0
-                ? data.documents[0].thumbnail
-                : null;
+      const data = await res.json();
+      const thumbnail =
+        data.documents && data.documents.length > 0
+          ? data.documents[0].thumbnail
+          : null;
 
-            return {
-              ...book,
-              isbn: data.documents[0]?.isbn?.split(" ")[0] || book.title,
-              thumbnail,
-            };
-          } catch (err) {
-            console.error(`Error fetching ${book.title}:`, err);
-            return { ...book, thumbnail: null };
-          }
-        })
+      return {
+        ...book,
+        isbn: data.documents[0]?.isbn?.split(" ")[0] || book.title,
+        thumbnail,
+      };
+    } catch (err) {
+      console.error(`Error fetching ${book.title}:`, err);
+      return { ...book, thumbnail: null };
+    }
+  })
       );
-      setBestNovels(results);
-    };
+  setBestNovels(results);
+};
 
-    fetchThumbnails();
+fetchThumbnails();
   }, []);
 
-  const handleClick = (isbn) => {
-    navigate(`/detail/${isbn}`);
-  };
+const handleClick = (isbn) => {
+  navigate(`/detail/${isbn}`);
+};
 
-  return (
-    <div className="home-container">
-      <h2>📚 2025년 소설 베스트셀러 TOP 12</h2>
-      <div className="book-grid">
-        {bestNovels.map((book, idx) => (
-          <div
-            key={book.isbn}
-            className="book-item"
-            onClick={() => handleClick(book.isbn)}
-          >
-            {book.thumbnail ? (
-              <img src={book.thumbnail} alt={book.title} />
-            ) : (
-              <div className="no-img">이미지 없음</div>
-            )}
-            <div className="book-title">
-              {idx + 1}위. {book.title}
-            </div>
-            <div className="book-author">{book.authors.join(', ')}</div>
+return (
+  <div className="home-container">
+    <h2>📚 2025년 소설 베스트셀러 TOP 12</h2>
+    <div className="book-grid">
+      {bestNovels.map((book, idx) => (
+        <div
+          key={book.isbn}
+          className="book-item"
+          onClick={() => handleClick(book.isbn)}
+        >
+          {book.thumbnail ? (
+            <img src={book.thumbnail} alt={book.title} />
+          ) : (
+            <div className="no-img">이미지 없음</div>
+          )}
+          <div className="book-title">
+            {idx + 1}위. {book.title}
           </div>
-        ))}
-      </div>
+          <div className="book-author">{book.authors.join(', ')}</div>
+        </div>
+      ))}
     </div>
-  );
+  </div>
+);
 }
 
 export default HomePage;
