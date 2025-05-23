@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { getHomeThumbnails } from '../api/bookApi';
 import '../styles/HomePage.css';
 
 function HomePage() {
@@ -8,13 +9,8 @@ function HomePage() {
 
   useEffect(() => {
     const fetchThumbnails = async () => {
-      try {
-        const res = await fetch('/api/home-thumbnails');
-        const data = await res.json();
-        setBookList(data);
-      } catch (error) {
-        console.error('썸네일 불러오기 실패', error);
-      }
+      const data = await getHomeThumbnails();
+      setBookList(data);
     };
 
     fetchThumbnails();
