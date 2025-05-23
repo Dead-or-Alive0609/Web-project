@@ -4,7 +4,7 @@
  * Vercel에 배포된 serverless 함수의 endpoint로 요청
  */
 
-const BASE_URL = import.meta.env.VITE_API_GATEWAY_URL;
+const BASE_URL = process.env.VITE_API_GATEWAY_URL;
 
 /**
  * 책 검색 함수
