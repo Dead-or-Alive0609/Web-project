@@ -25,7 +25,7 @@ function BoardPage() {
           <tr>
             <th>No</th>
             <th>제목</th>
-            <th>도서명</th> {/* ✅ 도서명 컬럼 추가 */}
+            <th>도서명</th> {/* 도서명 컬럼 추가 */}
             <th>글쓴이</th>
             <th>작성시간</th>
             <th>좋아요</th>
@@ -38,7 +38,7 @@ function BoardPage() {
               <td>
                 <Link to={`/board/${post.id}`}>{post.title}</Link>
               </td>
-              <td>{post.bookName || '-'}</td> {/* ✅ 도서명 표시 */}
+              <td>{post.bookName || '-'}</td> {/* 도서명 표시 */}
               <td>{post.author}</td>
               <td>{new Date(post.createdAt).toLocaleString()}</td>
               <td>{post.likes || 0}</td>

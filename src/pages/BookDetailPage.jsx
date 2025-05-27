@@ -96,11 +96,11 @@ function BookDetailPage() {
         <p><strong>출간일:</strong> {book.datetime?.split("T")[0]}</p>
         <p><strong>ISBN:</strong> {isbn13}</p>
         <p><strong>설명:</strong> {book.contents?.slice(0, 300)}...</p>
-        <p><strong>📦 현재 재고:</strong> {stock}권</p>
+        <p><strong>현재 재고:</strong> {stock}권</p>
         <button onClick={handleReserve} style={{ marginRight: "10px" }}>
-          📖 도서 예매
+          도서 예매
         </button>
-        <button onClick={handleLike}>💖 찜</button>
+        <button onClick={handleLike}>찜</button>
       </div>
     </div>
   );

@@ -26,7 +26,7 @@ function LoginPage({ setUsername }) {
     }
 
     localStorage.setItem('username', user.name);
-    setUsername(user.name); // ✅ App 상태 업데이트
+    setUsername(user.name); // App 상태 업데이트
     navigate('/');
   };
 

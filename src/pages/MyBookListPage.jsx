@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/MyBookListPage.css"; // ✅ CSS 분리 적용
+import "../styles/MyBookListPage.css"; // CSS 분리 적용
 
 function MyBookListPage() {
   const [activeTab, setActiveTab] = useState("reserved");
@@ -56,27 +56,27 @@ function MyBookListPage() {
 
   return (
     <div className="my-book-page">
-      <h2>📂 내 도서 리스트</h2>
+      <h2>내 도서 리스트</h2>
 
       <div className="book-tab-buttons">
         <button
           onClick={() => setActiveTab("reserved")}
           className={activeTab === "reserved" ? "active" : ""}
         >
-          📖 예매 목록
+          예매 목록
         </button>
         <button
           onClick={() => setActiveTab("liked")}
           className={activeTab === "liked" ? "active" : ""}
         >
-          💖 찜 목록
+          찜 목록
         </button>
       </div>
 
       {loading ? (
         <p>📡 불러오는 중입니다...</p>
       ) : books.length === 0 ? (
-        <p>📭 저장된 도서가 없습니다.</p>
+        <p>저장된 도서가 없습니다.</p>
       ) : (
         <div className="book-list-grid">
           {books.map((book, index) => (
