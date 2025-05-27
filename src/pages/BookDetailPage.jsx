@@ -86,7 +86,7 @@ function BookDetailPage() {
         <img
           src={book.thumbnail}
           alt={book.title}
-          style={{ width: "300px", height: "500px", marginRight: "24px" }}
+          style={{ width: "180px", height: "300px", marginRight: "24px" }}
         />
       )}
       <div>
