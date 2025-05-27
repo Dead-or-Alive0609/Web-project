@@ -86,7 +86,7 @@ function HomePage() {
 
   return (
     <div className="home-container">
-      <h2>📚 2025년 소설 베스트셀러 TOP 12</h2>
+      <h2>2025년 소설 베스트셀러 TOP 12</h2>
       <div className="book-grid">
         {bestNovels.map((book, idx) => (
           <div
