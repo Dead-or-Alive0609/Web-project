@@ -32,7 +32,7 @@ function BookSearchPage() {
 
   return (
     <div className="book-search-page">
-      <h2>📚 도서 검색</h2>
+      <h2>도서 검색</h2>
       <div className="search-bar">
         <input
           type="text"

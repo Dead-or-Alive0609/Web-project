@@ -30,7 +30,7 @@ function BookRecommendPage() {
 
   return (
     <div className="book-recommend-page">
-      <h2>📚 키워드별 인기 도서 추천</h2>
+      <h2>키워드별 인기 도서 추천</h2>
 
       <div className="keyword-buttons">
         {KEYWORDS.map((keyword) => (
